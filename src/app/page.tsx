@@ -7,7 +7,10 @@ import {
   Ghost,
   Leaf,
 } from "lucide-react";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { authOptions } from "./api/auth/[...nextauth]/options";
+import { redirect } from "next/navigation";
 const perks = [
   {
     name: "Instant Delivery",
@@ -28,7 +31,14 @@ const perks = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, exercitationem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, exercitationem?",
   },
 ];
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return redirect("/login");
+  }
+  {
+    console.log(JSON.stringify(session));
+  }
   return (
     <>
       <MaxWidthWrapper className="">
