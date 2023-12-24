@@ -21,7 +21,7 @@ const Navbar = () => {
                   />
                 </Link>
               </div>
-              <div className="hidden z-50 lg:ml-8 lg:block lg:self:stretch w-9/12 justify-between">
+              <div className="z-50 lg:ml-8 lg:self:stretch w-9/12 justify-between">
                 <Link className="ml-4" href="/dashboard">
                   Dashboard
                 </Link>

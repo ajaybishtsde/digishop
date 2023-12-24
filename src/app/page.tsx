@@ -1,34 +1,28 @@
 import MaxWidthWrapper from "@/components/maxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  ArrowBigDown,
-  ArrowDownToLine,
-  CheckCircle,
-  Ghost,
-  Leaf,
-} from "lucide-react";
+import { MessageSquare, BatteryFull, Sticker } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { authOptions } from "./api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 const perks = [
   {
-    name: "Instant Delivery",
-    Icon: ArrowDownToLine,
+    name: "Conversational Harmony",
+    Icon: MessageSquare,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, exercitationem?",
+      "Immerse yourself in the art of effortless dialogue, where words flow seamlessly. Foster connections, share ideas, and experience the joy of conversational harmony. ",
   },
   {
-    name: "Guranteed Quality",
-    Icon: CheckCircle,
+    name: "Pulse Conversations",
+    Icon: BatteryFull,
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. dolore incidunt, dolor ratione quas saepe quam alias. Molestias, accusamus doloremque quidem minima asperiores perferendis fuga, magnam illo quaerat delectus laborum recusandae sint!",
+      "Discover the rhythm of connection within our chat environment. Engage in vibrant discussions, pulsating with energy, as every message adds beats to the heartbeat of your conversations.",
   },
   {
-    name: "For The Planet",
-    Icon: Leaf,
+    name: "Synchronized Dialogues",
+    Icon: Sticker,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, exercitationem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, exercitationem?",
+      "Immerse yourself in synchronized dialogues, where every exchange is a dance of connection. Our platform harmonizes the ebb and flow of conversation, creating a seamless experience for meaningful interactions.",
   },
 ];
 export default async function Home() {
@@ -44,18 +38,18 @@ export default async function Home() {
       <MaxWidthWrapper className="">
         <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Your market place for high-quality{" "}
-            <span className="text-blue-600">Digital assets</span>
+            One message at a time{" "}
+            <span className="text-blue-600">Connect...</span>
           </h1>
           <p className="mt-6 text-lg max-w-prose text-muted-foreground">
-            Welcome to BeDigital. Every asset on our platform is verified by our
-            team to ensure our highest quality standards
+            Engage in lively conversations, effortlessly connecting hearts, and
+            unleash the power of words to chat, connect, and thrive.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <Link href="'/products" className={buttonVariants()}>
-              Browse trending
+              Explore more
             </Link>
-            <Button variant={"ghost"}>Our quality promise &rarr;</Button>
+            <Button variant={"ghost"}>See Insights &rarr;</Button>
           </div>
         </div>
       </MaxWidthWrapper>
