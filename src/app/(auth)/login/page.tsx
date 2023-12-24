@@ -43,6 +43,12 @@ export default function Login() {
       redirect: true,
     });
   };
+  const googleSignIn = () => {
+    signIn("google", {
+      callbackUrl: "/",
+      redirect: true,
+    });
+  };
   return (
     <MaxWidthWrapper className="">
       <section>
@@ -135,6 +141,7 @@ export default function Login() {
               <button
                 type="button"
                 className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+                onClick={googleSignIn}
               >
                 <span className="mr-2 inline-block">
                   <svg
@@ -155,12 +162,12 @@ export default function Login() {
               >
                 <span className="mr-2 inline-block">
                   <svg
-                    className="h-6 w-6 text-[#2563EB]"
+                    className="h-6 w-6 text-[#272727]"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
-                    <path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z"></path>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.11.793-.258.793-.577 0-.285-.01-1.04-.015-2.04-3.209.702-3.878-1.54-3.878-1.54-.523-1.326-1.276-1.678-1.276-1.678-1.043-.713.08-.698.08-.698 1.154.08 1.763 1.184 1.763 1.184 1.025 1.754 2.688 1.244 3.34.953.104-.743.4-1.244.726-1.527-2.54-.287-5.202-1.27-5.202-5.633 0-1.244.447-2.26 1.184-3.057-.12-.288-.513-1.444.112-3.004 0 0 .952-.305 3.12 1.164.905-.252 1.872-.378 2.834-.382.963.004 1.93.13 2.834.382 2.167-1.469 3.12-1.164 3.12-1.164.626 1.56.233 2.716.115 3.004.722.797 1.18 1.813 1.18 3.057 0 4.375-2.665 5.344-5.214 5.625.41.352.778 1.044.778 2.104 0 1.517-.014 2.736-.014 3.102 0 .32.19.692.799.574C20.565 21.798 24 16.303 24 12c0-6.627-5.373-12-12-12" />
                   </svg>
                 </span>
                 Sign in with Github

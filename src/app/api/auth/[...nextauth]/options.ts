@@ -3,9 +3,13 @@ import { connect } from "@/database/mongo.config";
 import { User } from "@/model/user";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
 export const authOptions: AuthOptions = {
-  // pages: {
-  //   signIn: "/login",
+  pages: {
+    signIn: "/login",
+  },
+  // session: {
+  //   strategy: "jwt",
   // },
   callbacks: {
     async signIn({ user, account, profile, credentials, email }) {
@@ -25,6 +29,7 @@ export const authOptions: AuthOptions = {
   },
   providers: [
     CredentialsProvider({
+      id: "credentials",
       name: "Credentials",
       credentials: {
         email: {
@@ -54,8 +59,12 @@ export const authOptions: AuthOptions = {
       },
     }),
     GitHubProvider({
-      clientId: process.env.GIT_ID as string,
+      clientId: process.env.GIT_CLIENT as string,
       clientSecret: process.env.GIT_SECRET as string,
+    }),
+    Google({
+      clientId: process.env.GOOGLE_CLIENT as string,
+      clientSecret: process.env.GOOGLE_SECRET as string,
     }),
   ],
 };

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 export function connect() {
   mongoose
-    .connect(process.env.MONGO_URI as string, {
+    .connect(process.env.MONGO_URL as string, {
       tls: true,
     })
     .then(() => console.log("connected"))

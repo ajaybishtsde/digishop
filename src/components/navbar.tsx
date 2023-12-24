@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import MaxWidthWrapper from "./maxWidthWrapper";
-import { Icons } from "./icons";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -13,7 +13,12 @@ const Navbar = () => {
             <div className="flex h-16 items-center justify-between">
               <div className="ml-4 flex lg:ml-0 w-3/12">
                 <Link href="/">
-                  <Icons.logo className="h-10 w-10" />
+                  <Image
+                    src="/beast-eye-svgrepo-com.svg"
+                    height={50}
+                    width={50}
+                    alt="logo"
+                  />
                 </Link>
               </div>
               <div className="hidden z-50 lg:ml-8 lg:block lg:self:stretch w-9/12 justify-between">
