@@ -28,7 +28,7 @@ const Navbar = () => {
                 <button
                   className="ml-4"
                   onClick={() => {
-                    signOut({ callbackUrl: "/login", redirect: true });
+                    signOut({ callbackUrl: "/", redirect: true });
                   }}
                 >
                   Sign-out

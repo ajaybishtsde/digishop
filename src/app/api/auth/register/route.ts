@@ -1,6 +1,7 @@
 import { connect } from "@/database/mongo.config";
 import { User } from "@/model/user";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 connect();
 export async function POST(request: NextRequest) {
   try {
@@ -18,6 +19,7 @@ export async function POST(request: NextRequest) {
         { status: 409 } // Conflict
       );
     } else {
+      body.password = await bcrypt.hash(body.password, 10);
       const newUser = await User.create(body);
 
       if (newUser) {

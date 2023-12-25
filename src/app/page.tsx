@@ -27,11 +27,8 @@ const perks = [
 ];
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  if (!session) {
-    return redirect("/login");
-  }
-  {
-    console.log(JSON.stringify(session));
+  if (session) {
+    return redirect("/dashboard");
   }
   return (
     <>
@@ -49,7 +46,9 @@ export default async function Home() {
             <Link href="'/products" className={buttonVariants()}>
               Explore more
             </Link>
-            <Button variant={"ghost"}>See Insights &rarr;</Button>
+            <Button variant={"ghost"}>
+              <Link href="/login">Sign In</Link>
+            </Button>
           </div>
         </div>
       </MaxWidthWrapper>

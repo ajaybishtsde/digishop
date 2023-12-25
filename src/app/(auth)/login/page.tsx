@@ -34,7 +34,7 @@ export default function Login() {
           signIn("credentials", {
             email: values.email,
             password: values.password,
-            callbackUrl: "/",
+            callbackUrl: "/dashboard",
             redirect: true,
           });
           router.refresh();
@@ -50,13 +50,13 @@ export default function Login() {
   };
   const gitHubSignIn = () => {
     signIn("github", {
-      callbackUrl: "/",
+      callbackUrl: "/dashboard",
       redirect: true,
     });
   };
   const googleSignIn = () => {
     signIn("google", {
-      callbackUrl: "/",
+      callbackUrl: "/dashboard",
       redirect: true,
     });
   };

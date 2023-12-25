@@ -1,6 +1,7 @@
 import { connect } from "@/database/mongo.config";
 import { User } from "@/model/user";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 connect();
 export async function POST(request: NextRequest) {
   try {
@@ -8,7 +9,10 @@ export async function POST(request: NextRequest) {
     console.log(body);
     const user = await User.findOne({ email: body.email });
     if (user) {
-      const isPasswordMatch = body.password === user.password;
+      const isPasswordMatch = await bcrypt.compare(
+        body.password,
+        user.password
+      );
       if (isPasswordMatch) {
         return NextResponse.json(
           {
