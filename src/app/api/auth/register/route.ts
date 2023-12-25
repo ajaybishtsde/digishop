@@ -3,31 +3,49 @@ import { User } from "@/model/user";
 import { NextRequest, NextResponse } from "next/server";
 connect();
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  console.log(body);
-  const user = await User.findOne({ email: body.email });
-  console.log(user);
-  if (user) {
+  try {
+    const body = await request.json();
+    console.log(body);
+    const existingUser = await User.findOne({ email: body.email });
+
+    if (existingUser) {
+      return NextResponse.json(
+        {
+          status: false,
+          message:
+            "This email is already registered with us. Please try with a different email.",
+        },
+        { status: 409 } // Conflict
+      );
+    } else {
+      const newUser = await User.create(body);
+
+      if (newUser) {
+        return NextResponse.json(
+          {
+            status: true,
+            message: "User is registered successfully",
+          },
+          { status: 201 }
+        );
+      } else {
+        return NextResponse.json(
+          {
+            status: false,
+            message: "Failed to register the user. Please try again later.",
+          },
+          { status: 500 }
+        );
+      }
+    }
+  } catch (error) {
+    console.error("Error during user registration:", error);
     return NextResponse.json(
       {
         status: false,
-        message:
-          "This email is alredy registerd with us, please try with different email",
+        message: "An unexpected error occurred. Please try again later.",
       },
-      { status: 400 }
+      { status: 500 }
     );
-  } else {
-    console.log("ebnter ");
-    const result = await User.create(body);
-    if (result) {
-      return NextResponse.json(
-        {
-          status: true,
-          message: "User is registerd",
-        },
-        { status: 200 }
-      );
-    }
   }
-  return NextResponse.json(body, { status: 200 });
 }

@@ -4,6 +4,10 @@ const userSchema = new Schema({
     required: [true, "name field is required"],
     type: Schema.Types.String,
   },
+  phone: {
+    required: [true, "phone field is required"],
+    type: Schema.Types.String,
+  },
   email: {
     required: [true, "email field is required"],
     type: Schema.Types.String,
